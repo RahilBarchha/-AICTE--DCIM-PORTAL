@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Brand Palettes (HSL Harmonized) */
+  --primary: hsl(217, 91%, 60%);
+  --primary-light: hsl(213, 94%, 68%);
+  --primary-dark: hsl(222, 84%, 48%);
+  --primary-glow: hsl(217 91% 60% / 0.35);
+  
+  --accent: hsl(165, 82%, 51%);
+  --accent-light: hsl(165, 82%, 65%);
+  --accent-glow: hsl(165 82% 51% / 0.35);
+  
+  --purple: hsl(270, 95%, 68%);
+  --purple-glow: hsl(270 95% 68% / 0.35);
+
+  /* Status Colors & Tones */
+  --danger: hsl(0, 84%, 60%);
+  --danger-bg: hsl(0 84% 60% / 0.15);
+  --danger-border: hsl(0 84% 60% / 0.35);
+
+  --warning: hsl(38, 92%, 50%);
+  --warning-bg: hsl(38 92% 50% / 0.15);
+  --warning-border: hsl(38 92% 50% / 0.35);
+
+  --success: hsl(152, 76%, 46%);
+  --success-bg: hsl(152 76% 46% / 0.15);
+  --success-border: hsl(152 76% 46% / 0.35);
+
+  --info: hsl(199, 89%, 48%);
+  --info-bg: hsl(199 89% 48% / 0.15);
+  --info-border: hsl(199 89% 48% / 0.35);
+
+  /* Surfaces & Glassmorphism Tokens (React Bits Dark Mesh) */
+  --background: #080d1a;
+  --background-secondary: #0c1427;
+  --surface: rgba(16, 26, 48, 0.75);
+  --surface-solid: #101a30;
+  --surface-raised: rgba(23, 37, 68, 0.85);
+  --surface-hover: rgba(30, 48, 88, 0.9);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-focus: rgba(56, 189, 248, 0.5);
+
+  /* Glassmorphic Shadows */
+  --glass-blur: blur(16px);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-card-border: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* Text Typography */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+
+  /* Font Families */
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-input: 8px;
+  --radius-card: 14px;
+  --radius-badge: 9999px;
+
+  /* Layout dimensions */
+  --sidebar-width: 240px;
+  --topbar-height: 60px;
+
+  /* Motion & Animations */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  font-family: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--background);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-badge);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+a {
+  color: var(--primary-light);
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+/* ── React Bits Animation Keyframes ─────────────────────────────────────── */
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

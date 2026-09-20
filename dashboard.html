@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AICTE DCIM Dashboard — Infrastructure & Cybersecurity SOC</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <!-- Mobile Topbar -->
+  <div class="topbar">
+    <div class="brand">AICTE DCIM</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </div>
+
+  <div class="app-shell">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <div class="brand">
+        AICTE DCIM
+        <span>Ops Console · <span id="current-user">admin</span> · <span id="current-role" class="mono"></span></span>
+      </div>
+      <ul>
+        <li data-section="home" class="active"><span class="icon">◆</span> Dashboard</li>
+        <li data-section="monitoring"><span class="icon">◎</span> Monitoring</li>
+        <li data-section="servers"><span class="icon">▣</span> Servers</li>
+        <li data-section="loadbalancers"><span class="icon">⚖️</span> Load Balancers</li>
+        <li data-section="network"><span class="icon">⇄</span> Network</li>
+        <li data-section="hardware"><span class="icon">▢</span> Hardware</li>
+        <li data-section="licenses"><span class="icon">▤</span> Licenses</li>
+        <li data-section="alerts"><span class="icon">!</span> Alerts <span class="badge badge-danger" id="alerts-badge" style="display:none;">0</span></li>
+        <li data-section="users"><span class="icon">◈</span> Users</li>
+        <li data-section="reports"><span class="icon">▥</span> Reports</li>
+        <li data-section="audit"><span class="icon">▦</span> Audit Logs</li>
+        <li data-section="ai-assistant"><span class="icon">🤖</span> AI Copilot <span class="badge badge-success" style="font-size:0.62rem;padding:2px 6px;">Groq</span></li>
+        <li id="logout"><span class="icon">↩</span> Logout</li>
+      </ul>
+    </nav>
+
+    <!-- Main Workspace Container with Top Command Header -->
+    <div style="flex:1;display:flex;flex-direction:column;min-width:0;min-height:100vh;">
+      
+      <!-- React Bits Style Top Command Header -->
+      <header class="top-command-header" style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:12px 28px;
+        background:rgba(12, 20, 39, 0.7);
+        backdrop-filter:blur(16px);
+        -webkit-backdrop-filter:blur(16px);
+        border-bottom:1px solid var(--border);
+        gap:16px;
+        flex-wrap:wrap;
+        position:sticky;
+        top:0;
+        z-index:20;
+      ">
+        <!-- Quick Search & Breadcrumb -->
+        <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:240px;max-width:480px;">
+          <div id="globalSearchTrigger" style="
+            display:flex;
+            align-items:center;
+            gap:8px;
+            background:rgba(255,255,255,0.05);
+            border:1px solid var(--border);
+            padding:6px 14px;
+            border-radius:var(--radius-badge);
+            color:var(--text-secondary);
+            font-size:0.82rem;
+            cursor:pointer;
+            width:100%;
+            transition:all var(--transition-fast);
+          " title="Click or press Ctrl+K to jump to Server Search Engine">
+            <span>🔍</span>
+            <span style="flex:1;">Search infrastructure or servers...</span>
+            <kbd style="
+              font-family:var(--font-mono);
+              font-size:0.68rem;
+              background:rgba(255,255,255,0.1);
+              padding:2px 6px;
+              border-radius:4px;
+              border:1px solid rgba(255,255,255,0.15);
+              color:var(--text-muted);
+            ">Ctrl + K</kbd>
+          </div>
+        </div>
+
+        <!-- System Badges & Real-Time Indicator -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <span class="badge badge-success" style="font-size:0.72rem;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.35);">
+            ● Core DCIM Active
+          </span>
+          <span class="badge badge-info" style="font-size:0.72rem;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.3);">
+            🔒 Zero-Knowledge Security
+          </span>
+          <div id="liveClock" class="mono" style="
+            font-size:0.78rem;
+            color:var(--text-secondary);
+            padding:4px 10px;
+            background:rgba(255,255,255,0.04);
+            border:1px solid var(--border);
+            border-radius:var(--radius-input);
+          ">--:--:--</div>
+        </div>
+      </header>
+
+      <!-- Main Dynamic Content Target -->
+      <main class="main-content" id="app"></main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/credentials.js?v=4.0"></script>
+  <script src="js/supabaseClient.js?v=4.0"></script>
+  <script src="js/helpers.js?v=4.0"></script>
+  <script src="js/aiAssistant.js?v=4.0"></script>
+  <script src="js/Servers.js?v=4.0"></script>
+  <script src="js/loadbalancers.js?v=4.0"></script>
+  <script src="js/network.js?v=4.0"></script>
+  <script src="js/hardware.js?v=4.0"></script>
+  <script src="js/licenses.js?v=4.0"></script>
+  <script src="js/alerts.js?v=4.0"></script>
+  <script src="js/users.js?v=4.0"></script>
+  <script src="js/audit.js?v=4.0"></script>
+  <script src="js/monitoring.js?v=4.0"></script>
+  <script src="js/reports.js?v=4.0"></script>
+  <script src="js/home.js?v=4.0"></script>
+  <script src="js/data.js?v=4.0"></script>
+  <script src="js/automation.js?v=4.0"></script>
+  <script src="js/app.js?v=4.0"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AICTE Cybersecurity Portal - Access & Registration</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <span class="eyebrow">AICTE DCIM / SOC</span>
+      <h1>Cybersecurity Portal</h1>
+      <p class="subtitle">Data Center Infrastructure & Threat Management</p>
+    </div>
+
+    <!-- Auth Tabs Switcher -->
+    <div class="auth-tabs" role="tablist">
+      <button type="button" class="auth-tab-btn active" id="tabLogin" role="tab" aria-selected="true">
+        <span>Sign In</span>
+      </button>
+      <button type="button" class="auth-tab-btn" id="tabRegister" role="tab" aria-selected="false">
+        <span>Register</span>
+      </button>
+    </div>
+
+    <!-- Universal Alert Banner -->
+    <div class="auth-alert" id="authAlert" role="alert" style="display: none;"></div>
+
+    <!-- 1. LOGIN FORM -->
+    <form id="loginForm" class="auth-form active">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <div class="input-field-wrapper">
+          <input type="text" id="username" placeholder="e.g. superadmin, admin" autocomplete="username" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <div class="input-field-wrapper password-wrapper">
+          <input type="password" id="password" placeholder="Enter password (e.g. Super@88)" autocomplete="current-password" required>
+          <button type="button" class="toggle-password-btn" id="toggleLoginPassword" aria-label="Toggle password visibility" title="Show/Hide Password">👁️</button>
+        </div>
+      </div>
+
+      <div class="form-row-utility">
+        <label class="remember-label"><input type="checkbox" id="rememberMe"> Remember this console</label>
+      </div>
+
+      <button type="submit" class="submit-btn" id="loginBtn">
+        <span class="btn-text">Authenticate & Sign In</span>
+      </button>
+
+      <div class="switch-mode-text">
+        Don't have an account? <button type="button" class="link-btn" id="linkToRegister">Register now</button>
+      </div>
+    </form>
+
+    <!-- 2. REGISTER FORM -->
+    <form id="registerForm" class="auth-form" style="display: none;">
+      <div class="input-group">
+        <label for="regFullName">Full Name <span class="required-star">*</span></label>
+        <div class="input-field-wrapper">
+          <input type="text" id="regFullName" placeholder="e.g. John Doe" autocomplete="name" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="regUsername">Username <span class="required-star">*</span></label>
+        <div class="input-field-wrapper">
+          <input type="text" id="regUsername" placeholder="Unique username (e.g. jdoe)" autocomplete="username" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="regEmail">Work Email</label>
+        <div class="input-field-wrapper">
+          <input type="email" id="regEmail" placeholder="e.g. user@aicte.gov.in" autocomplete="email">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="regRole">Portal Role <span class="required-star">*</span></label>
+        <div class="input-field-wrapper">
+          <select id="regRole" required>
+            <option value="IT Operator">IT Operator</option>
+            <option value="Network Engineer">Network Engineer</option>
+            <option value="Auditor">Auditor (Compliance)</option>
+            <option value="Viewer">Viewer (Read-Only)</option>
+            <option value="Admin">Admin</option>
+            <option value="Super Admin">Super Admin</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="label-with-meta">
+          <label for="regPassword">Password <span class="required-star">*</span></label>
+          <span class="char-counter" id="passwordCharCounter">0 / 8 characters</span>
+        </div>
+        <div class="input-field-wrapper password-wrapper">
+          <input type="password" id="regPassword" placeholder="Exactly 8 characters" maxlength="8" autocomplete="new-password" required>
+          <button type="button" class="toggle-password-btn" id="toggleRegPassword" aria-label="Toggle password visibility" title="Show/Hide Password">👁️</button>
+        </div>
+        <div class="password-rule-hint" id="passwordRuleHint">
+          <span class="rule-icon">🔒</span> <strong>Rule:</strong> Password must be <strong>exactly 8 characters</strong>.
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="regConfirmPassword">Confirm Password <span class="required-star">*</span></label>
+        <div class="input-field-wrapper password-wrapper">
+          <input type="password" id="regConfirmPassword" placeholder="Re-enter 8-character password" maxlength="8" autocomplete="new-password" required>
+          <button type="button" class="toggle-password-btn" id="toggleRegConfirmPassword" aria-label="Toggle password visibility" title="Show/Hide Password">👁️</button>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn register-submit" id="registerBtn">
+        <span class="btn-text">Register Account & Save Credentials</span>
+      </button>
+
+      <div class="switch-mode-text">
+        Already have an account? <button type="button" class="link-btn" id="linkToLogin">Sign In</button>
+      </div>
+    </form>
+
+    <div class="security-footer">
+      <span>🛡️ Protected by AICTE Identity Guard · 8-Character Password Policy</span>
+    </div>
+  </div>
+
+  <script src="js/credentials.js?v=2.5"></script>
+  <script src="js/auth.js?v=2.5"></script>
+</body>
+</html>
+

@@ -1,0 +1,405 @@
+/* ==========================================================================
+   AICTE DCIM / Cybersecurity Portal — React Bits Aesthetic Login & Auth CSS
+   ========================================================================== */
+
+body {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #080d1a 0%, #0c1427 100%);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--space-4);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle background tech grid */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(16, 26, 48, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: var(--space-6) var(--space-5);
+  border-radius: var(--radius-card);
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 
+    0 24px 64px -12px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(56, 189, 248, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.login-container:hover {
+  box-shadow: 
+    0 32px 72px -12px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(56, 189, 248, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.login-container .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 12px;
+  border-radius: var(--radius-badge);
+  margin-bottom: var(--space-2);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+.login-container h1 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 var(--space-1);
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-header .subtitle {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ---------- Auth Tabs Switcher (React Bits Segmented Control) ---------- */
+.auth-tabs {
+  display: flex;
+  background: rgba(10, 16, 30, 0.9);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-input);
+  padding: 4px;
+  margin-bottom: var(--space-4);
+  gap: 4px;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-radius: calc(var(--radius-input) - 2px);
+  padding: 0.6rem 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.auth-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.auth-tab-btn.active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+/* ---------- Alert Banner ---------- */
+.auth-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-input);
+  font-size: 0.84rem;
+  margin-bottom: var(--space-3);
+  animation: fadeIn 200ms ease;
+  line-height: 1.4;
+}
+
+.auth-alert.danger {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: #fca5a5;
+}
+
+.auth-alert.success {
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: #86efac;
+}
+
+/* ---------- Forms & Groups ---------- */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label-with-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.required-star {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.char-counter {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-badge);
+  background: rgba(10, 16, 30, 0.9);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.char-counter.valid {
+  background: var(--success-bg);
+  border-color: var(--success);
+  color: var(--success);
+  font-weight: 700;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+}
+
+.char-counter.invalid {
+  background: var(--danger-bg);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.input-field-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-field-wrapper input,
+.input-field-wrapper select {
+  width: 100%;
+  margin: 0;
+  padding: 0.72rem 0.9rem;
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  background: rgba(10, 16, 30, 0.95);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.input-field-wrapper select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.input-field-wrapper input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.input-field-wrapper input:focus,
+.input-field-wrapper select:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+.password-wrapper input {
+  padding-right: 42px;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-input);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.toggle-password-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.password-rule-hint {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 3px;
+}
+
+.password-rule-hint .rule-icon {
+  font-size: 0.8rem;
+}
+
+/* ---------- Utility Row ---------- */
+.form-row-utility {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.remember-label input[type="checkbox"] {
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* ---------- Submit Button (Shimmer Effect) ---------- */
+.submit-btn {
+  width: 100%;
+  padding: 0.78rem 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-input);
+  color: white;
+  font-size: 0.94rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.switch-mode-text {
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+.link-btn {
+  background: transparent;
+  border: none;
+  color: var(--primary-light);
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.84rem;
+  text-decoration: underline;
+}
+
+.link-btn:hover {
+  color: #ffffff;
+}
+
+.security-footer {
+  margin-top: var(--space-5);
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
